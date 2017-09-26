@@ -1,6 +1,7 @@
 # ga-preact-pwa
 
 > Webpack3 boilerplate for building SPA / PWA / offline front-end apps with :atom_symbol: [Preact](https://github.com/developit/preact)
+
 > Based and thanks to the work of [lukeed/preact-starter](https://github.com/lukeed/preact-starter)
 
 [Demo](https://ga-pwa.firebaseapp.com/)
