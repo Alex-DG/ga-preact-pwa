@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import { Link } from 'preact-router';
-import Card from '../tags/card';
+import Card from '../components/Card';
 
 export default function (props) {
 	return (

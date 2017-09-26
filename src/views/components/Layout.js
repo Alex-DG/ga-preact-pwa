@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import Header from './header';
+import Header from './Header';
 
 export default function (props) {
 	return (

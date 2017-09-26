@@ -2,7 +2,7 @@ import { h } from 'preact'
 import { Router } from 'preact-router';
 
 import Home from './pages/Home';
-import Layout from './tags/Layout';
+import Layout from './components/Layout';
 import Article from './pages/Article';
 import Error404 from './pages/errors/404';
 import Credit from './pages/Credit';
