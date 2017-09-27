@@ -11,39 +11,57 @@ function init() {
 init();
 
 if (process.env.NODE_ENV === 'production') {
+
+	const runtime = require('offline-plugin/runtime');
+	runtime.install({
+		onInstalled: () => {
+			console.log('=> onInstalled: App is ready for offline usage!');
+		},
+		onUpdateReady: () => {
+			console.log('=> onUpdateReady: Apply update.');
+				// Tells to new SW to take control immediately
+				runtime.applyUpdate();
+		},
+		onUpdated: () => {
+			console.log('=> onUpdated: Refresh page!!');
+				// Reload the webpage to load into the new version
+				window.location.reload();
+		},
+	});
+
 	// cache all assets if browser supports serviceworker
-  if ('serviceWorker' in navigator && location.protocol === 'https:') {
-    navigator.serviceWorker.register('/service-worker.js').then(function(reg) {
-      // updatefound is fired if service-worker.js changes.
-      reg.onupdatefound = function() {
-        var installingWorker = reg.installing;
-
-        installingWorker.onstatechange = function() {
-          switch (installingWorker.state) {
-            case 'installed':
-              if (navigator.serviceWorker.controller) {
-                // At this point, the old content will have been purged and the fresh content will
-                // have been added to the cache.
-                // It's the perfect time to display a "New content is available; please refresh."
-                // message in the page's interface.
-                console.log('New or updated content is available.');
-              } else {
-                // At this point, everything has been precached.
-                // It's the perfect time to display a "Content is cached for offline use." message.
-                console.log('Content is now available offline!');
-              }
-              break;
-
-            case 'redundant':
-              console.error('The installing service worker became redundant.');
-              break;
-          }
-        };
-      };
-    }).catch(function(e) {
-      console.error('Error during service worker registration:', e);
-    });
-}
+  // if ('serviceWorker' in navigator && location.protocol === 'https:') {
+  //   navigator.serviceWorker.register('/service-worker.js').then(function(reg) {
+  //     // updatefound is fired if service-worker.js changes.
+  //     reg.onupdatefound = function() {
+  //       var installingWorker = reg.installing;
+	//
+  //       installingWorker.onstatechange = function() {
+  //         switch (installingWorker.state) {
+  //           case 'installed':
+  //             if (navigator.serviceWorker.controller) {
+  //               // At this point, the old content will have been purged and the fresh content will
+  //               // have been added to the cache.
+  //               // It's the perfect time to display a "New content is available; please refresh."
+  //               // message in the page's interface.
+  //               console.log('New or updated content is available: `refresh the page`.');
+  //             } else {
+  //               // At this point, everything has been precached.
+  //               // It's the perfect time to display a "Content is cached for offline use." message.
+  //               console.log('Content is now available offline!');
+  //             }
+  //             break;
+	//
+  //           case 'redundant':
+  //             console.error('The installing service worker became redundant.');
+  //             break;
+  //         }
+  //       };
+  //     };
+  //   }).catch(function(e) {
+  //     console.error('Error during service worker registration:', e);
+  //   });
+	// }
 
 	// add Google Analytics
 	//window.ga = new GAnalytics('UA-XXXXXXXX-X');

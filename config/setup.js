@@ -2,6 +2,7 @@ const { join } = require('path');
 const webpack = require('webpack');
 const ExtractText = require('extract-text-webpack-plugin');
 const SWPrecache = require('sw-precache-webpack-plugin');
+const OfflinePlugin = require('offline-plugin');
 const Clean = require('clean-webpack-plugin');
 const Copy = require('copy-webpack-plugin');
 const HTML = require('html-webpack-plugin');
@@ -26,16 +27,22 @@ module.exports = isProd => {
 			new webpack.LoaderOptionsPlugin({ minimize:true }),
 			new webpack.optimize.UglifyJsPlugin(uglify),
 			new ExtractText('styles.[hash].css'),
-			new SWPrecache({
-				filename: 'service-worker.js',
-				navigateFallback: 'index.html',
-        staticFileGlobs: [
-          'src/static/img/**.*',
-          'src/styles/all.sass',
-        ],
-        mergeStaticsConfig: true,
-				staticFileGlobsIgnorePatterns: [/\.map$/]
-			})
+			new OfflinePlugin({
+            AppCache: false,
+            ServiceWorker: {
+                events: true
+            }
+        })
+			// new SWPrecache({
+			// 	filename: 'service-worker.js',
+			// 	navigateFallback: 'index.html',
+      //   staticFileGlobs: [
+      //     'src/static/img/**.*',
+      //     'src/styles/all.sass',
+      //   ],
+      //   mergeStaticsConfig: true,
+			// 	staticFileGlobsIgnorePatterns: [/\.map$/]
+			// })
 		);
 	} else {
 		// dev only
