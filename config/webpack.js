@@ -45,7 +45,7 @@ module.exports = env => {
 					options: babelOpts
 				}
 			}, {
-				test: /\.(sass|scss)$/,
+				test: /\.(css|sass|scss)$/,
 				use: isProd ? ExtractText.extract({ fallback:'style-loader', use:styles }) : styles
 			}]
 		},

@@ -3,13 +3,15 @@ import { Router } from 'preact-router';
 
 import Home from './pages/Home';
 import Layout from './components/Layout';
+import Snackbar from './components/Snackbar';
 import Article from './pages/Article';
 import Error404 from './pages/errors/404';
 import Credit from './pages/Credit';
 import Blog from './pages/Blog';
 
-// track pages on route change
-const onChange = obj => window.ga && ga.send('pageview', { dp:obj.url });
+// Track pages on route change
+const onChange = (obj) => {
+}
 
 export default (
 	<Layout>
@@ -20,5 +22,8 @@ export default (
 			<Credit path="/credit" />
 			<Error404 default />
 		</Router>
+
+		<Snackbar timeout={5000} />
+
 	</Layout>
 );

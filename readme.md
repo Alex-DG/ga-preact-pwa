@@ -8,13 +8,14 @@
 
 ## Features
 
-* Offline Caching (via `serviceWorker`)
+* Offline Caching (via `serviceWorker` and `offline-plugin`)
 * SASS & Autoprefixer
 * Asset Versioning (aka "cache-busting")
 * ES2015 (ES6) and ES2016 (ES7) support
 * Hot Module Replacement (HMR) for all files
 * Preact's [Developer Tools](#preact-developer-tools)
 * Firebase headers configuration
+* [MUI lightweight CSS framework](https://www.muicss.com/) with [preact-mui](https://www.npmjs.com/package/preact-mui)
 * [Lighthouse](https://github.com/GoogleChrome/lighthouse) certified
 
 ## Development
@@ -44,6 +45,12 @@ $ yarn watch
 ```
 
 Like [`start`](#start), but will auto-compile & auto-reload the server after any file changes within the `src` directory.
+
+```
+$ yarn deploy
+```
+
+If you are using Firebase hosting, this command create a new `dist` directory and deploy on Firebase.
 
 ### Preact Developer Tools
 

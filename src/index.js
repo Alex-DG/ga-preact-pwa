@@ -1,73 +1,84 @@
 import { render } from 'preact';
+import { doc, emit } from './views/shared';
 import GAnalytics from 'ganalytics';
 import './index.sass';
 
 let elem, App;
 function init() {
-	App = require('./views').default;
-	elem = render(App, document.getElementById('root'), elem);
+	App = require('./views').default; // views/index.js
+	elem = render(App, doc.getElementById('root'), elem);
 }
 
 init();
 
 if (process.env.NODE_ENV === 'production') {
-
+	// Register SW
 	const runtime = require('offline-plugin/runtime');
 	runtime.install({
-		onInstalled: () => {
-			console.log('=> onInstalled: App is ready for offline usage!');
-		},
-		onUpdateReady: () => {
-			console.log('=> onUpdateReady: Apply update.');
-				// Tells to new SW to take control immediately
-				runtime.applyUpdate();
-		},
-		onUpdated: () => {
-			console.log('=> onUpdated: Refresh page!!');
-				// Reload the webpage to load into the new version
-				window.location.reload();
-		},
+	  onInstalled: () => {
+			emit('snackbar', 'App is ready for offline usage');
+	  },
+	  onUpdating: () => {
+	  },
+	  onUpdateReady: () => {
+	    runtime.applyUpdate();
+	  },
+	  onUpdated: () => {
+	    // AutoReloadPage: window.location.reload();
+			console.log('New content available, reload the page');
+			emit('snackbar', 'New content available, reload the page');
+	  },
+	  onUpdateFailed: () => {
+			emit('snackbar', 'An eror happened while updating!');
+	  }
 	});
 
-	// cache all assets if browser supports serviceworker
-  // if ('serviceWorker' in navigator && location.protocol === 'https:') {
-  //   navigator.serviceWorker.register('/service-worker.js').then(function(reg) {
-  //     // updatefound is fired if service-worker.js changes.
-  //     reg.onupdatefound = function() {
-  //       var installingWorker = reg.installing;
-	//
-  //       installingWorker.onstatechange = function() {
-  //         switch (installingWorker.state) {
-  //           case 'installed':
-  //             if (navigator.serviceWorker.controller) {
-  //               // At this point, the old content will have been purged and the fresh content will
-  //               // have been added to the cache.
-  //               // It's the perfect time to display a "New content is available; please refresh."
-  //               // message in the page's interface.
-  //               console.log('New or updated content is available: `refresh the page`.');
-  //             } else {
-  //               // At this point, everything has been precached.
-  //               // It's the perfect time to display a "Content is cached for offline use." message.
-  //               console.log('Content is now available offline!');
-  //             }
-  //             break;
-	//
-  //           case 'redundant':
-  //             console.error('The installing service worker became redundant.');
-  //             break;
-  //         }
-  //       };
-  //     };
-  //   }).catch(function(e) {
-  //     console.error('Error during service worker registration:', e);
-  //   });
+	// => If app is used through the browser or not
+	// if (window.matchMedia('(display-mode: standalone)').matches) {
+	// 	console.log("Thank you for installing our app!");
 	// }
+
+	// => NEED TO LINK WEB APP TO A NATIVE APP THROUGH STORE
+	// window.addEventListener("load", e => {
+	//   if (navigator.getInstalledRelatedApps) {
+	// 		console.log('getInstalledRelatedApps:');
+	//     navigator.getInstalledRelatedApps()
+	//     .then(apps => {
+	// 			console.log('callback:');
+	//       if(apps.length > 0) { /* Hide the UI */ }
+	// 			console.log(apps);
+	//     });
+	//   }
+	// });
+
+	// => BEFORE PROMPT : INSTALL BANNER
+	// window.addEventListener('beforeinstallprompt', function(e) {
+	//   console.log('[beforeinstallprompt] Event fired');
+	//
+	//   // e.userChoice will return a Promise.
+	//   // For more details read: https://developers.google.com/web/fundamentals/getting-started/primers/promises
+	//   e.userChoice.then(function(choiceResult) {
+	//
+	//     console.log(choiceResult.outcome);
+	//
+	//     if(choiceResult.outcome == 'dismissed') {
+	//       console.log('User cancelled home screen install');
+	// 			localStorage['isAdded'] = JSON.stringify(false); // APP NOT INSTALL
+	//     }
+	//     else {
+	// 			localStorage['isAdded'] = JSON.stringify(true);
+	//       console.log('User added to home screen'); // APP INSTALL
+	//     }
+	//   });
+	// });
 
 	// add Google Analytics
 	//window.ga = new GAnalytics('UA-XXXXXXXX-X');
 } else {
+
 	// use preact's devtools
 	require('preact/devtools');
+
 	// listen for HMR
 	if (module.hot) {
 		module.hot.accept('./views', init);

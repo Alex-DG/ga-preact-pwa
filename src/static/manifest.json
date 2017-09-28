@@ -1,10 +1,10 @@
 {
   "name": "Preact Starter",
   "short_name": "Preact",
-  "start_url": "/",
+  "start_url": "/?utm_source=homescreen",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#F2F2F2",
+  "background_color": "#93a9d8",
   "theme_color": "#93a9d8",
   "icons": [{
     "src": "icon/android-chrome-192x192.png",

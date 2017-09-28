@@ -6,7 +6,7 @@ export default function (props) {
 	return (
 		<div className="page page__home">
 			<Card>
-				<h1>Home Bob</h1>
+				<h1>Home domo Goku-san</h1>
 				<p>This is the home page.</p>
 
 				<p>You should check out:</p>
@@ -28,6 +28,7 @@ export default function (props) {
 					<li><a href="https://github.com/GoogleChrome/lighthouse" target="_blank" rel="noopener">Lighthouse</a> approved (100/100)</li>
 				</ul>
 			</Card>
+
 		</div>
 	);
 }
