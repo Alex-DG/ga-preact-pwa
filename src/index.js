@@ -1,6 +1,5 @@
 import { render } from 'preact';
 import { doc, emit } from './views/shared';
-import GAnalytics from 'ganalytics';
 import './index.sass';
 
 let elem, App;
@@ -24,7 +23,6 @@ if (process.env.NODE_ENV === 'production') {
 	    runtime.applyUpdate();
 	  },
 	  onUpdated: () => {
-	    // AutoReloadPage: window.location.reload();
 			console.log('New content available, reload the page');
 			emit('snackbar', 'New content available, reload the page');
 	  },
@@ -72,8 +70,6 @@ if (process.env.NODE_ENV === 'production') {
 	//   });
 	// });
 
-	// add Google Analytics
-	//window.ga = new GAnalytics('UA-XXXXXXXX-X');
 } else {
 
 	// use preact's devtools

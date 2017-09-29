@@ -23,7 +23,7 @@ export default (
 			<Error404 default />
 		</Router>
 
-		<Snackbar timeout={5000} />
+		<Snackbar timeout={6000} />
 
 	</Layout>
 );

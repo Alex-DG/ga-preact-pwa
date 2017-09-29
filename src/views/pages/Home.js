@@ -18,7 +18,7 @@ export default function (props) {
 
 			<Card>
 				<h2>Progressive Web App with Preact</h2>
-				<p>Bob</p>
+				<p>Moshimoshi Beerus-sama</p>
 			</Card>
 
 		</div>
