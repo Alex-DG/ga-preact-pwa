@@ -46,6 +46,8 @@ $ yarn watch
 
 Like [`start`](#start), but will auto-compile & auto-reload the server after any file changes within the `src` directory.
 
+#### deploy
+
 ```
 $ yarn deploy
 ```
