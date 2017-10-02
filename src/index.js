@@ -11,6 +11,13 @@ function init() {
 init();
 
 if (process.env.NODE_ENV === 'production') {
+
+	// Cancel the install prompt by preventing the default
+	window.addEventListener('beforeinstallprompt', function(e) {
+	  e.preventDefault();
+	  return false;
+	});
+
 	// Register SW
 	const runtime = require('offline-plugin/runtime');
 	runtime.install({
@@ -30,45 +37,6 @@ if (process.env.NODE_ENV === 'production') {
 			emit('snackbar', 'An eror happened while updating!');
 	  }
 	});
-
-	// => If app is used through the browser or not
-	// if (window.matchMedia('(display-mode: standalone)').matches) {
-	// 	console.log("Thank you for installing our app!");
-	// }
-
-	// => NEED TO LINK WEB APP TO A NATIVE APP THROUGH STORE
-	// window.addEventListener("load", e => {
-	//   if (navigator.getInstalledRelatedApps) {
-	// 		console.log('getInstalledRelatedApps:');
-	//     navigator.getInstalledRelatedApps()
-	//     .then(apps => {
-	// 			console.log('callback:');
-	//       if(apps.length > 0) { /* Hide the UI */ }
-	// 			console.log(apps);
-	//     });
-	//   }
-	// });
-
-	// => BEFORE PROMPT : INSTALL BANNER
-	// window.addEventListener('beforeinstallprompt', function(e) {
-	//   console.log('[beforeinstallprompt] Event fired');
-	//
-	//   // e.userChoice will return a Promise.
-	//   // For more details read: https://developers.google.com/web/fundamentals/getting-started/primers/promises
-	//   e.userChoice.then(function(choiceResult) {
-	//
-	//     console.log(choiceResult.outcome);
-	//
-	//     if(choiceResult.outcome == 'dismissed') {
-	//       console.log('User cancelled home screen install');
-	// 			localStorage['isAdded'] = JSON.stringify(false); // APP NOT INSTALL
-	//     }
-	//     else {
-	// 			localStorage['isAdded'] = JSON.stringify(true);
-	//       console.log('User added to home screen'); // APP INSTALL
-	//     }
-	//   });
-	// });
 
 } else {
 
