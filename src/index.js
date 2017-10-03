@@ -11,6 +11,13 @@ function init() {
 init();
 
 if (process.env.NODE_ENV === 'production') {
+
+	// Cancel the install prompt by preventing the default
+	window.addEventListener('beforeinstallprompt', function(e) {
+	  e.preventDefault();
+	  return false;
+	});
+
 	// Register SW
 	const runtime = require('offline-plugin/runtime');
 	runtime.install({
