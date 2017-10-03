@@ -31,6 +31,12 @@ export default (
 			<Snackbar timeout={6000} />
 		</Layout>
 
-		<InstallOverlay />
+		{ localStorage.getItem('pref_overlay') !== 'true' ?
+			<InstallOverlay /> : ''
+	  }
 	</div>
 );
+
+const showInstallOverlay = () => {
+	console.log('lol');
+}

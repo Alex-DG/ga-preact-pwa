@@ -21,7 +21,7 @@ export default class InstallOverlay extends Component {
     this.handleClick = (evt) => {
       const name = evt.target.name;
       const checked = evt.target.checked;
-      console.log(name + ": " + checked);
+			localStorage.setItem(name, checked);
     }
 	}
 
