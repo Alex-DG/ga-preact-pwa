@@ -2,7 +2,7 @@ import { h } from 'preact';
 
 export default function (props) {
 	return (
-    <div id="overlay-arrow-ios">
+    <div id="overlay-arrow">
       <svg viewBox="0 0 950 500" height="100%" width="100%">
         <defs>
           <marker id='head' orient="auto"

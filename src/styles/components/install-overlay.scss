@@ -25,10 +25,34 @@
   margin-top: 10px;
 }
 
-#overlay-arrow-ios {
+#overlay-arrow {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+#overlay-checkb-ios {
+  margin-left: 10px;
+  position: fixed;
+  bottom:0%;
+  width:100%;
+  color: white;
+  
+  & label {
+    font-weight: 600;
+  }
+}
+
+#overlay-checkb-android {
+  margin-left: 10px;
+  position: fixed;
+  top:0%;
+  width:100%;
+  color: white;
+
+  & label {
+    font-weight: 600;
+  }
 }
