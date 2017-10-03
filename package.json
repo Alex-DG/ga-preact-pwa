@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --env.production --config config/webpack",
     "start": "serve dist -s",
-    "watch": "webpack-dev-server --config config/webpack",
+    "watch": "webpack-dev-server --open --config config/webpack",
     "deploy": "yarn build && firebase deploy"
   },
   "dependencies": {
