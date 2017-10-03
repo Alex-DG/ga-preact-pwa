@@ -36,10 +36,10 @@
 #overlay-checkb-ios {
   margin-left: 10px;
   position: fixed;
-  bottom:0%;
+  top:0%;
   width:100%;
   color: white;
-  
+
   & label {
     font-weight: 600;
   }
@@ -48,7 +48,7 @@
 #overlay-checkb-android {
   margin-left: 10px;
   position: fixed;
-  top:0%;
+  bottom:0%;
   width:100%;
   color: white;
 

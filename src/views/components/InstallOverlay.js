@@ -54,6 +54,7 @@ export default class InstallOverlay extends Component {
   }
 
   render() {
+		console.log('overlay!');
     return(
       <div>
         { this.state.visible ?
