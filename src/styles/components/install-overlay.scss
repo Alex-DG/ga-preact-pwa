@@ -36,11 +36,13 @@
 #overlay-checkb-ios {
   margin-left: 10px;
   position: fixed;
-  top:0%;
-  width:100%;
-  color: white;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  -webkit-backface-visibility: hidden;
 
   & label {
+    color: white;
     font-weight: 600;
   }
 }
@@ -50,9 +52,9 @@
   position: fixed;
   bottom:0%;
   width:100%;
-  color: white;
 
   & label {
+    color: white;
     font-weight: 600;
   }
 }
