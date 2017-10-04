@@ -5,6 +5,7 @@
 $header-height: 7 * $base-unit
 
 .header
+
 	position: fixed
 	height: $header-height
 	width: 100%
@@ -12,6 +13,7 @@ $header-height: 7 * $base-unit
 	left: 0
 	top: 0
 	background: $primary
+	-webkit-backface-visibility: hidden
 	@extend %shadow
 	//z-index: 50
 

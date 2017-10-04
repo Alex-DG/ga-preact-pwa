@@ -4,6 +4,9 @@ import { doc } from '../shared';
 import Button from 'preact-mui/lib/button';
 import Checkbox from 'preact-mui/lib/checkbox';
 
+import IosIc from '../../static/icon/opt_ios.png'
+import AndroidIc from '../../static/icon/opt_android.png'
+
 import { getMobileOperatingSystem, isMobilePlatform } from '../../utils/mobile';
 
 import LineArrowSvg from './LineArrowSvg';
@@ -25,11 +28,23 @@ export default class InstallOverlay extends Component {
     }
 	}
 
-	renderLineArrow() {
-		const os = getMobileOperatingSystem();
+	renderIcon(os) {
 		switch (os) {
 			case 'Android':
-			return <LineArrowSvg coords={'M 650 100 q 200 -100 220 -500'}/>;
+			return <img id="brower_ic" name="icon" src={AndroidIc} />;
+				break;
+			case 'iOS':
+			return <img id="brower_ic" name="icon" src={IosIc} />;
+				break;
+			default:
+			return '';
+		}
+	}
+
+	renderLineArrow(os) {
+		switch (os) {
+			case 'Android':
+			return <LineArrowSvg coords={'M 1050 10 q 200 -100 220 -400'}/>;
 				break;
 			case 'iOS':
 			return <LineArrowSvg coords={'M 200 320 q -20 400 250 600'}/>;
@@ -39,8 +54,7 @@ export default class InstallOverlay extends Component {
 		}
 	}
 
-  handleCheckbID() {
-    const os = getMobileOperatingSystem();
+  handleCheckbID(os) {
 		switch (os) {
 			case 'Android':
 			return "overlay-checkb-android";
@@ -54,24 +68,25 @@ export default class InstallOverlay extends Component {
   }
 
   render() {
+		const os = getMobileOperatingSystem();
     return(
       <div>
         { this.state.visible ?
           <div id="install-overlay">
-						{ this.renderLineArrow() }
+						{ this.renderLineArrow(os) }
             <div>
               <div id="overlay-text">
-                <strong>You can Add To Home screen this website on your device.</strong>
+                <strong>This app can be "Added To Home Screen" </strong>{this.renderIcon(os)}
                 <div id="overlay-btn">
                   <Button
                     color="accent"
-                    variant="raised"
-                    size="small"
+                    variant="flat"
+                    size=""
                     onClick={ this.handleClose }>Close</Button>
                 </div>
               </div>
             </div>
-            <div id={this.handleCheckbID()}>
+            <div id={this.handleCheckbID(os)}>
               <Checkbox
                 name="pref_overlay"
                 label="Don't show it again"
