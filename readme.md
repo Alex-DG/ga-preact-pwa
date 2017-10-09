@@ -4,6 +4,8 @@
 
 > Based and thanks to the work of [lukeed/preact-starter](https://github.com/lukeed/preact-starter)
 
+> My goal is to experiment PWA with Preact (command/libs may change as I'm keen to test different alternatives-best practices)
+
 [Demo](https://ga-pwa.firebaseapp.com/)
 
 ## Features
@@ -15,6 +17,7 @@
 * Hot Module Replacement (HMR) for all files
 * Preact's [Developer Tools](#preact-developer-tools)
 * Firebase headers configuration
+* Testing : Jest, Chai
 * [MUI lightweight CSS framework](https://www.muicss.com/) with [preact-mui](https://www.npmjs.com/package/preact-mui)
 * [Lighthouse](https://github.com/GoogleChrome/lighthouse) certified
 
@@ -45,6 +48,14 @@ $ yarn watch
 ```
 
 Like [`start`](#start), but will auto-compile & auto-reload the server after any file changes within the `src` directory.
+
+#### test
+
+```
+$ yarn test
+```
+
+Start tests through the project with `Jest`
 
 #### deploy
 
