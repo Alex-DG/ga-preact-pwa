@@ -32,10 +32,10 @@ export default class Snackbar extends Component {
 		if (text) {
 			switch (text) {
 				case 'New content available, reload the page':
-				return <Button color="accent"  size="small" onClick={ this.reload } variant="raised">Reload</Button>;
+				return <Button color="accent" size="small" onClick={ this.reload } variant="raised">Reload</Button>;
 					break;
 				default: // just Hide
-				return <Button color="accent"  size="small" onClick={ this.hide } variant="raised">Close</Button>;
+				return <Button color="accent" size="small" onClick={ this.hide } variant="raised">Close</Button>;
 			}
 		}
 	}
@@ -56,7 +56,7 @@ export default class Snackbar extends Component {
             </Col>
           </Row>
           :
-          ''
+          <div className="bob"></div>
         }
       </div>
     )

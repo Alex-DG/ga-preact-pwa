@@ -1,11 +1,11 @@
-import { render } from 'preact';
+import { h, render } from 'preact';
 import { doc, emit } from './views/shared';
 import './index.sass';
 
-let elem, App;
+let root;
 function init() {
-	App = require('./views').default; // views/index.js
-	elem = render(App, doc.getElementById('root'), elem);
+	let App = require('./views/App').default;
+	root = render(<App />, doc.getElementById('root'), root);
 }
 
 init();
@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === 'production') {
 	  return false;
 	});
 
-	// Register SW
+	// Register ServiceWorker via OfflinePlugin
 	const runtime = require('offline-plugin/runtime');
 	runtime.install({
 	  onInstalled: () => {
@@ -34,17 +34,17 @@ if (process.env.NODE_ENV === 'production') {
 			emit('snackbar', 'New content available, reload the page');
 	  },
 	  onUpdateFailed: () => {
-			emit('snackbar', 'An eror happened while updating!');
+			emit('snackbar', 'An error happened while updating!');
 	  }
 	});
 
 } else {
 
-	// use preact's devtools
+	// Use preact's devtools
 	require('preact/devtools');
 
-	// listen for HMR
+	// Listen for HMR
 	if (module.hot) {
-		module.hot.accept('./views', init);
+		module.hot.accept('./views/App', init);
 	}
 }

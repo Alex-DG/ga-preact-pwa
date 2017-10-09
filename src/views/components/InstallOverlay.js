@@ -68,7 +68,7 @@ export default class InstallOverlay extends Component {
   }
 
   render() {
-		const os = getMobileOperatingSystem();
+		const os = getMobileOperatingSystem() ;
     return(
       <div>
         { this.state.visible ?

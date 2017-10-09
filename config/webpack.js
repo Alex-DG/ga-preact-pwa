@@ -1,20 +1,14 @@
 const { join } = require('path');
 const ExtractText = require('extract-text-webpack-plugin');
-const babelOpts = require('./babel');
 const styles = require('./styles');
 const setup = require('./setup');
-
+const path = require('path');
 const dist = join(__dirname, '..', 'dist');
 const exclude = /(node_modules|bower_components)/;
 
 module.exports = env => {
 	const isProd = env && env.production;
-
-	if (isProd) {
-		babelOpts.presets.push('babili');
-	} else {
-		styles.unshift({ loader:'style-loader' });
-	}
+	if(!isProd) { styles.unshift({ loader:'style-loader' }); }
 
 	return {
 		entry: {
@@ -30,25 +24,24 @@ module.exports = env => {
 			publicPath: '/'
 		},
 		resolve: {
+			extensions: ['.jsx', '.js', '.json', '.less'],
 			alias: {
-				// Run `npm install preact-compat --save`
-				// 'react': 'preact-compat',
-				// 'react-dom': 'preact-compat'
+				components: path.resolve(__dirname, "src/components"),    // used for tests
+				style: path.resolve(__dirname, "src/style"),
+				'react': 'preact-compat',
+				'react-dom': 'preact-compat'
 			}
 		},
 		module: {
 			rules: [{
 				test: /\.jsx?$/,
 				exclude: exclude,
-				loader: {
-					loader: 'babel-loader',
-					options: babelOpts
-				}
+				use: 'babel-loader'
 			}, {
 				test: /\.(css|sass|scss)$/,
 				use: isProd ? ExtractText.extract({ fallback:'style-loader', use:styles }) : styles
 			}, {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpe?g|gif)$/,
         use: [
           {
             loader: 'file-loader',

@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { Link } from 'preact-router';
 
-export default function () {
+const Header = () => {
 	return (
 		<header className="header">
 			<h1>Preact PWA</h1>
@@ -11,5 +11,7 @@ export default function () {
 				<Link href="/credit">Credit</Link>
 			</nav>
 		</header>
-	)
-}
+	);
+};
+
+export default Header;
