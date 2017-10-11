@@ -1,6 +1,8 @@
 import { h, Component } from 'preact'
 import { Router } from 'preact-router';
 
+import { getConfigSample } from '../utils/api';
+
 import Layout from './components/Layout';
 
 import Home from './pages/Home';
@@ -14,6 +16,7 @@ import Snackbar from './components/Snackbar';
 import Error404 from './pages/errors/404';
 
 export default class App extends Component {
+
 	constructor() {
 		super();
 		this.handleRoute = (e) => {
@@ -21,25 +24,22 @@ export default class App extends Component {
 		};
 	}
 
+	componentDidMount() {
+		// TODO: just playing with Hapi....
+		getConfigSample().then(data => console.log(data));
+	}
+
 	render() {
 		return (
-			<div>
-				<Layout>
-					<Router onChange={ this.handleRoute }>
-						<Home path="/" />
-						<Blog path="/blog" />
-						<Article path="/blog/:title" />
-						<Credit path="/credit" />
-						<Error404 default />
-					</Router>
-
-					<Snackbar timeout={6000} />
-				</Layout>
-
-				{ localStorage.getItem('pref_overlay') !== 'true' ?
-					<InstallOverlay /> : <div class="bob"></div>
-				}
-			</div>
+			<Layout>
+				<Router onChange={ this.handleRoute }>
+					<Home path="/" />
+					<Blog path="/blog" />
+					<Article path="/blog/:title" />
+					<Credit path="/credit" />
+					<Error404 default />
+				</Router>
+			</Layout>
 		);
 	}
 }

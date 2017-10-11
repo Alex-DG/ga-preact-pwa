@@ -1,18 +1,8 @@
 import { h, Component } from 'preact';
 import { Link } from 'preact-router';
 import Card from '../components/Card';
-import { getConfigSample } from '../../utils/api';
-import axios from 'axios';
 
 export default class Home extends Component {
-
-	componentDidMount() {
-		// TODO: just playing with Hapi....
-		if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-			getConfigSample().then(data => console.log(data));
-		}
-	}
-
 	render() {
 		return (
 			<div className="page page__home">
