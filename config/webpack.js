@@ -12,7 +12,7 @@ module.exports = env => {
 
 	return {
 		entry: {
-			app: './src/index.js',
+			app: ['babel-polyfill', './src/index.js'],
 			vendor: [
 				// pull these to a `vendor.js` file
 				'preact'

@@ -289,6 +289,13 @@ aws4@^1.2.1:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.6.0.tgz#83ef5ca860b2b32e4a0deedee8c771b9db57471e"
 
+axios@^0.16.2:
+  version "0.16.2"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.16.2.tgz#ba4f92f17167dfbab40983785454b9ac149c3c6d"
+  dependencies:
+    follow-redirects "^1.2.3"
+    is-buffer "^1.1.5"
+
 babel-code-frame@^6.11.0, babel-code-frame@^6.22.0:
   version "6.22.0"
   resolved "https://registry.yarnpkg.com/babel-code-frame/-/babel-code-frame-6.22.0.tgz#027620bee567a88c32561574e7fd0801d33118e4"
@@ -919,6 +926,14 @@ babel-plugin-transform-strict-mode@^6.24.1:
 babel-plugin-transform-undefined-to-void@^6.8.2:
   version "6.8.2"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-undefined-to-void/-/babel-plugin-transform-undefined-to-void-6.8.2.tgz#fe2b1d294eb05e87524eb93724dea6e2c3d66fa1"
+
+babel-polyfill@^6.26.0:
+  version "6.26.0"
+  resolved "https://registry.yarnpkg.com/babel-polyfill/-/babel-polyfill-6.26.0.tgz#379937abc67d7895970adc621f284cd966cf2153"
+  dependencies:
+    babel-runtime "^6.26.0"
+    core-js "^2.5.0"
+    regenerator-runtime "^0.10.5"
 
 babel-preset-babili@^0.1.4:
   version "0.1.4"
@@ -1919,7 +1934,7 @@ debug@2.6.8, debug@^2.2.0, debug@^2.6.0, debug@^2.6.6, debug@^2.6.8:
   dependencies:
     ms "2.0.0"
 
-debug@^2.6.3:
+debug@^2.6.3, debug@^2.6.9:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   dependencies:
@@ -2563,6 +2578,12 @@ find-up@^2.0.0, find-up@^2.1.0:
 flatten@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
+
+follow-redirects@^1.2.3:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.2.5.tgz#ffd3e14cbdd5eaa72f61b6368c1f68516c2a26cc"
+  dependencies:
+    debug "^2.6.9"
 
 for-in@^0.1.3:
   version "0.1.8"
@@ -4922,7 +4943,14 @@ postcss@^6.0.10:
     source-map "^0.5.7"
     supports-color "^4.2.1"
 
-preact-compat@^3.11.0, preact-compat@^3.17.0:
+preact-compat-enzyme@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/preact-compat-enzyme/-/preact-compat-enzyme-0.2.5.tgz#1cad6c5c99f749d079fcdccf695470d88331d76f"
+  dependencies:
+    preact "8.x"
+    preact-compat "3.x"
+
+preact-compat@3.x, preact-compat@^3.11.0, preact-compat@^3.17.0:
   version "3.17.0"
   resolved "https://registry.yarnpkg.com/preact-compat/-/preact-compat-3.17.0.tgz#528cfdfc301190c1a0f47567336be1f4be0266b3"
   dependencies:
@@ -4971,7 +4999,7 @@ preact-transition-group@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/preact-transition-group/-/preact-transition-group-1.1.1.tgz#f0a49327ea515ece34ea2be864c4a7d29e5d6e10"
 
-preact@^8.2.5:
+preact@8.x, preact@^8.2.5:
   version "8.2.5"
   resolved "https://registry.yarnpkg.com/preact/-/preact-8.2.5.tgz#cbfa3962a8012768159f6d01d46f9c1eb3213c0a"
 
@@ -5214,7 +5242,7 @@ regenerate@^1.2.1:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.3.2.tgz#d1941c67bad437e1be76433add5b385f95b19260"
 
-regenerator-runtime@^0.10.0:
+regenerator-runtime@^0.10.0, regenerator-runtime@^0.10.5:
   version "0.10.5"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.10.5.tgz#336c3efc1220adcedda2c9fab67b5a7955a33658"
 
