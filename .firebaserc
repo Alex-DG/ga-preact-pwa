@@ -1,6 +1,0 @@
-{
-  "projects": {
-    "default": "gearedapp-preact-pwa",
-    "staging": "ga-pwa"
-  }
-}
