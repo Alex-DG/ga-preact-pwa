@@ -6,7 +6,6 @@ let root;
 function init() {
 	let App = require('./views/App').default;
 	root = render(<App />, doc.getElementById('root'), root);
-	emit('snackbar', 'App is ready for offline usage');
 }
 
 init();

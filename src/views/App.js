@@ -20,11 +20,16 @@ export default class App extends Component {
 	constructor() {
 		super();
 		this.handleRoute = (e) => {
+			//console.log('handleRoute');
 			this.currentUrl = e.url; // The newly routed URL
 		};
 	}
 
 	componentDidMount() {
+		console.log('componentDidMount');
+		// setInterval(() => {
+    //     console.log('bob')
+    //    }, 1000);
 		// TODO: just playing with Hapi....
 		getConfigSample().then(data => console.log(data));
 	}
