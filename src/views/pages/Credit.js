@@ -6,7 +6,7 @@ export default function (props) {
 		<div className="page page__credit">
 			<Card>
 				<h1>Batman</h1>
-				<p>Hi.</p>
+				<h1>Hi.</h1>
 			</Card>
 		</div>
 	)
